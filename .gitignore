@@ -24,8 +24,6 @@ mvnw.cmd
 # Gradle
 .gradle/
 gradle/
-gradlew
-gradlew.bat
 
 # IDE
 .idea/
