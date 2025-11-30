@@ -1,32 +1,17 @@
-# 文字冒险游戏 - Android 版
+# Text Adventure Game
 
-## 项目概述
-这是一个使用Android Studio开发的文字冒险游戏，玩家可以通过输入命令在不同的房间之间移动，寻找宝藏。
+这是一个Android文字冒险游戏项目，玩家可以通过输入命令在不同的房间之间移动，寻找宝藏。
 
 ## 项目特性
+
 - 5个房间：起始房间、花园、图书馆、地牢、宝藏室
-- 支持北、南、东、西四个方向移动
-- 支持命令：查看、帮助、退出
+- 支持命令：北、南、东、西移动，查看、帮助、退出
 - 基于文本的用户界面
-- 使用 Material Design 组件
-- 响应式布局设计
-
-## 构建和运行
-
-### 环境要求
-- Android Studio Flamingo | 2022.2.1 或更高版本
-- Android SDK 33 (编译SDK版本)
-- Java 8 或 11
-
-### 构建步骤
-1. 将整个项目文件夹导入 Android Studio
-2. 等待 Gradle 同步完成
-3. 点击绿色的 "Run" 按钮 (▶️) 运行项目
-4. 选择目标设备并点击 "OK"
-
-更多详细构建说明请参见 [BUILD_INSTRUCTIONS.md](./BUILD_INSTRUCTIONS.md) 文件。
+- 面向对象的游戏引擎架构
+- 实时命令处理
 
 ## 游戏玩法
+
 1. 游戏启动后，玩家位于起始房间
 2. 可以输入以下命令：
    - `北` `南` `东` `西` - 移动到相邻房间
@@ -35,7 +20,33 @@
    - `退出` - 退出游戏
 3. 目标是找到宝藏室 (Treasure Room)
 
+## 已知路径
+
+- 起始房间 → 北 → 花园
+- 起始房间 → 东 → 地牢
+- 花园 → 南 → 起始房间
+- 花园 → 东 → 图书馆
+- 图书馆 → 西 → 花园
+- 地牢 → 西 → 起始房间
+- 地牢 → 北 → 宝藏室
+
+## 构建说明
+
+本项目使用GitHub Actions进行云端构建，可以解决本地环境构建APK的问题。
+
+### 云端构建
+
+项目包含预配置的GitHub Actions工作流，位于 `.github/workflows/android_build.yml`，可自动构建Debug和Release版本的APK。
+
+## 技术栈
+
+- Android SDK
+- Java
+- AndroidX库
+- Gradle构建系统
+
 ## 项目结构
+
 ```
 TextAdventure/
 ├── app/
@@ -58,9 +69,21 @@ TextAdventure/
 └── gradlew
 ```
 
-## 扩展建议
-1. 添加更多房间和谜题
-2. 增加物品收集系统
-3. 实现存档/读档功能
-4. 添加背景音乐和音效
-5. 优化界面设计
+## 解决方案文档
+
+项目包含详细的解决方案文档：
+
+- `AAPT2_CONTAINER_SOLUTION.md` - AAPT2容器环境问题解决方案
+- `MOBILE_DEVICE_SOLUTION.md` - 手机设备解决方案
+- `ROOT_SOLUTION.md` - Root权限解决方案
+- `ALTERNATIVE_BUILD_METHODS.md` - 替代构建方案
+- `BUILD_INSTRUCTIONS.md` - 构建说明
+
+## GitHub Actions配置
+
+- `github_actions/android_build.yml` - GitHub Actions构建配置
+- `github_actions/README.md` - 云端构建说明
+
+## 部署
+
+使用GitHub Actions工作流自动构建APK，下载产物即可安装。
